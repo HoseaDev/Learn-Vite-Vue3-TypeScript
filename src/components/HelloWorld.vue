@@ -2,10 +2,11 @@
 import {ref} from 'vue'
 import Modal from "./Modal.vue";
 import AsyncShow from "./AsyncShow.vue";
+import ShowDog from "./ShowDog.vue";
 // import Modal from "./Modal.vue";
 
 export default {
-  components: {AsyncShow, Modal},
+  components: {ShowDog, AsyncShow, Modal},
   props: {
     msg: ''
   },
@@ -36,7 +37,12 @@ export default {
   </div>
   <Suspense>
     <template #default>
-      <async-show/>
+<!--      这里vue3只能识别一层布局，如果是多个布局需要嵌套-->
+     <div>
+       <show-dog />
+       <async-show/>
+
+     </div>
     </template>
     <template #fallback>
       <h1>loading..</h1>
